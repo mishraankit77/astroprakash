@@ -67,17 +67,15 @@ export const KundliChart: React.FC<KundliChartProps> = ({
   const displayedLagna = language === "hi" && rashiTranslation[lagnaSign] ? rashiTranslation[lagnaSign] : lagnaSign;
 
   return (
-    <div className="flex flex-col items-center justify-center p-3 bg-gradient-to-br from-orange-50/50 via-white to-amber-50/30 rounded-2xl border border-orange-200 shadow-sm">
-      <div className="text-xs font-bold text-orange-800 uppercase tracking-wider mb-2 flex items-center gap-1.5">
-        <span className="w-2 h-2 rounded-full bg-orange-500 animate-ping" />
+    <div className="flex flex-col items-center justify-center p-2 sm:p-4 bg-gradient-to-br from-orange-50/50 via-white to-amber-50/30 rounded-2xl border border-orange-200 shadow-sm w-full max-w-full overflow-hidden">
+      <div className="text-[11px] sm:text-xs font-bold text-orange-800 uppercase tracking-wider mb-2 flex items-center gap-1.5 text-center">
+        <span className="w-2 h-2 rounded-full bg-orange-500 animate-ping shrink-0" />
         {language === "hi" ? "वैदिक लग्न कुंडली (D-1 चक्र)" : "Vedic Lagna Kundli (D-1 Chart)"}
       </div>
 
       <svg
         viewBox="0 0 100 100"
-        width={size}
-        height={size}
-        className="w-full max-w-[380px] drop-shadow-md select-none"
+        className="w-full max-w-[340px] aspect-square drop-shadow-md select-none mx-auto"
       >
         <defs>
           <linearGradient id="chartBg" x1="0%" y1="0%" x2="100%" y2="100%">

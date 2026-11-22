@@ -229,18 +229,18 @@ export default function FreeKundliPage() {
             </div>
 
             {/* Diamond Lagna Chart & Planet Table */}
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 items-start">
               {/* Chart */}
-              <div className="lg:col-span-5 bg-white p-6 rounded-3xl border border-orange-100 shadow-sm flex flex-col items-center">
+              <div className="lg:col-span-5 bg-white p-3 sm:p-6 rounded-3xl border border-orange-100 shadow-sm flex flex-col items-center overflow-hidden">
                 <KundliChart
                   housePlanets={kundliResult.housePlanets}
                   lagnaSign={kundliResult.lagna.sign}
-                  size={360}
+                  size={340}
                 />
               </div>
 
               {/* Planetary Table */}
-              <div className="lg:col-span-7 bg-white p-6 rounded-3xl border border-orange-100 shadow-sm overflow-x-auto">
+              <div className="lg:col-span-7 bg-white p-4 sm:p-6 rounded-3xl border border-orange-100 shadow-sm overflow-x-auto">
                 <h3 className="text-base font-bold text-neutral-900 mb-4 pb-2 border-b border-orange-100">
                   {t("planetaryPositionsTitle")}
                 </h3>

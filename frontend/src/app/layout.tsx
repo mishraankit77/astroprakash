@@ -1,9 +1,18 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import React, { Suspense } from "react";
 import { LanguageProvider } from "@/context/LanguageContext";
+import { MobileBottomNav } from "@/components/MobileBottomNav";
 
 const inter = Inter({ subsets: ["latin"] });
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 5,
+  themeColor: "#FF6D00",
+};
 
 export const metadata: Metadata = {
   title: "AstroPrakash - Consult Top Astrologers, Free Kundli & Prakash AI",
@@ -21,9 +30,14 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className="h-full bg-[#FFFDF9]">
-      <body className={`${inter.className} min-h-full flex flex-col bg-[#FFFDF9] text-neutral-800 antialiased`}>
+      <body className={`${inter.className} min-h-full flex flex-col bg-[#FFFDF9] text-neutral-800 antialiased selection:bg-orange-100 selection:text-orange-900`}>
         <LanguageProvider>
-          {children}
+          <div className="flex-1 flex flex-col pb-16 lg:pb-0">
+            {children}
+          </div>
+          <Suspense fallback={null}>
+            <MobileBottomNav />
+          </Suspense>
         </LanguageProvider>
       </body>
     </html>

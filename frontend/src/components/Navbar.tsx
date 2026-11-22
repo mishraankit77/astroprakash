@@ -21,7 +21,9 @@ import {
   LogOut,
   ChevronDown,
   Globe,
-  MoreHorizontal,
+  Clock,
+  CheckCircle2,
+  Phone,
 } from "lucide-react";
 
 interface NavbarProps {
@@ -123,6 +125,11 @@ export const Navbar: React.FC<NavbarProps> = ({
       href: "/astromall",
       icon: ShoppingBag,
     },
+    {
+      name: t("navPanchang"),
+      href: "/panchang",
+      icon: Clock,
+    },
   ];
 
   const allNavLinks: NavLinkItem[] = [...primaryNavLinks, ...secondaryNavLinks];
@@ -131,13 +138,13 @@ export const Navbar: React.FC<NavbarProps> = ({
     <>
       <header className="sticky top-0 z-40 bg-white border-b border-orange-100 shadow-[0_2px_15px_-3px_rgba(255,152,0,0.08)] w-full">
         {/* Top Ticker Announcement */}
-        <div className="bg-gradient-to-r from-orange-600 via-amber-500 to-orange-500 text-white text-[11px] font-semibold py-1 px-3 sm:px-6">
+        <div className="bg-gradient-to-r from-orange-600 via-amber-500 to-orange-500 text-white text-[10px] sm:text-[11px] font-semibold py-1 px-3 sm:px-6">
           <div className="max-w-[1440px] mx-auto flex items-center justify-between gap-2">
             <span className="hidden lg:flex items-center gap-2 truncate">
               <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping shrink-0" />
               <span className="truncate">{t("liveAstrologersTicker")}</span>
             </span>
-            <span className="mx-auto lg:mx-0 font-bold bg-black/15 px-2.5 py-0.5 rounded-full text-[11px] shrink-0">
+            <span className="mx-auto lg:mx-0 font-bold bg-black/15 px-2.5 py-0.5 rounded-full text-[10px] sm:text-[11px] shrink-0 text-center">
               {t("firstChatFree")}
             </span>
             <div className="hidden md:flex items-center gap-3 shrink-0">
@@ -158,16 +165,15 @@ export const Navbar: React.FC<NavbarProps> = ({
         </div>
 
         {/* Main Navbar Bar */}
-        <div className="w-full max-w-[1440px] mx-auto px-3 sm:px-5 lg:px-6">
-          <div className="flex items-center justify-between h-16 sm:h-18 gap-2">
-            {/* Left: Brand Logo */}
+        <div className="w-full max-w-[1440px] mx-auto px-2.5 sm:px-5 lg:px-6">
+          <div className="flex items-center justify-between h-14 sm:h-18 gap-1.5 sm:gap-2">
+            {/* Left: Brand Logo (compact on mobile) */}
             <div className="shrink-0 flex items-center">
               <Logo size="md" />
             </div>
 
-            {/* Center: Desktop Navigation Links */}
+            {/* Center: Desktop Navigation Links (hidden on mobile/tablet) */}
             <nav className="hidden lg:flex items-center space-x-0.5 xl:space-x-1 min-w-0">
-              {/* Primary Links */}
               {primaryNavLinks.map((item) => {
                 const Icon = item.icon;
                 const isActive = pathname === item.href;
@@ -194,7 +200,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                 );
               })}
 
-              {/* Secondary Links for 2XL screens */}
+              {/* Secondary Links on Wide screens (2XL) */}
               <div className="hidden 2xl:flex items-center space-x-1">
                 {secondaryNavLinks.map((item) => {
                   const Icon = item.icon;
@@ -216,7 +222,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                 })}
               </div>
 
-              {/* "More" Dropdown for screens between lg and 2xl */}
+              {/* "More" Dropdown on medium screens (lg to 2xl) */}
               <div className="relative 2xl:hidden" ref={moreRef}>
                 <button
                   type="button"
@@ -253,17 +259,17 @@ export const Navbar: React.FC<NavbarProps> = ({
               </div>
             </nav>
 
-            {/* Right: Actions Section (Language, Wallet, Profile) - Guaranteed No-Shrink & No-Clipping */}
-            <div className="shrink-0 flex items-center space-x-1.5 sm:space-x-2.5">
+            {/* Right: Actions Section - Responsive & Guaranteed NO Clipping */}
+            <div className="shrink-0 flex items-center space-x-1 sm:space-x-2">
               {/* Language Switcher Pill */}
               <button
                 type="button"
                 onClick={toggleLanguage}
-                className="flex items-center gap-1 px-2 sm:px-2.5 py-1.5 rounded-full bg-amber-50 hover:bg-amber-100/90 border border-amber-200 text-neutral-800 text-[11px] sm:text-xs font-bold transition-all cursor-pointer shadow-2xs shrink-0"
+                className="flex items-center gap-1 px-1.5 sm:px-2.5 py-1 sm:py-1.5 rounded-full bg-amber-50 hover:bg-amber-100 border border-amber-200 text-neutral-800 text-[10px] sm:text-xs font-bold transition-all cursor-pointer shadow-2xs shrink-0"
                 title={language === "en" ? "हिन्दी में बदलें" : "Switch to English"}
               >
-                <Globe className="w-3.5 h-3.5 text-orange-600 shrink-0" />
-                <span className="font-extrabold text-[11px]">
+                <Globe className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-orange-600 shrink-0" />
+                <span className="font-extrabold text-[10px] sm:text-[11px]">
                   {language === "en" ? "हिन्दी" : "EN"}
                 </span>
               </button>
@@ -272,19 +278,19 @@ export const Navbar: React.FC<NavbarProps> = ({
               <button
                 type="button"
                 onClick={onOpenWallet}
-                className="flex items-center gap-1 sm:gap-1.5 px-2.5 sm:px-3 py-1.5 rounded-full bg-orange-50 border border-orange-200/90 text-orange-900 text-xs font-extrabold hover:bg-orange-100 transition-all shadow-xs cursor-pointer group shrink-0"
+                className="flex items-center gap-1 sm:gap-1.5 px-2 sm:px-3 py-1 sm:py-1.5 rounded-full bg-orange-50 border border-orange-200/90 text-orange-900 text-[11px] sm:text-xs font-black hover:bg-orange-100 transition-all shadow-xs cursor-pointer group shrink-0"
                 title="AstroPrakash Wallet"
               >
-                <Wallet className="w-3.5 h-3.5 text-orange-500 group-hover:scale-110 transition-transform shrink-0" />
+                <Wallet className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-orange-500 group-hover:scale-110 transition-transform shrink-0" />
                 <span>₹{currentUser?.walletBalance || walletBalance}</span>
-                <span className="text-[9px] bg-orange-500 text-white px-1.5 py-0.2 rounded-full font-bold shrink-0">
+                <span className="hidden sm:inline text-[9px] bg-orange-500 text-white px-1.5 py-0.2 rounded-full font-bold shrink-0">
                   + Add
                 </span>
               </button>
 
-              {/* Login / Profile Button */}
+              {/* Login / Profile Button for Tablet & Desktop */}
               {currentUser ? (
-                <div className="relative shrink-0" ref={userRef}>
+                <div className="relative shrink-0 hidden sm:block" ref={userRef}>
                   <button
                     type="button"
                     onClick={() => setUserDropdownOpen(!userDropdownOpen)}
@@ -293,7 +299,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                     <div className="w-6 h-6 rounded-full bg-gradient-to-r from-orange-500 to-amber-500 text-white flex items-center justify-center text-xs font-black shadow-xs">
                       {currentUser.name ? currentUser.name.charAt(0).toUpperCase() : "U"}
                     </div>
-                    <span className="max-w-[70px] truncate hidden sm:inline text-xs">{currentUser.name}</span>
+                    <span className="max-w-[70px] truncate hidden md:inline text-xs">{currentUser.name}</span>
                     <ChevronDown className="w-3.5 h-3.5 text-neutral-500" />
                   </button>
 
@@ -337,86 +343,127 @@ export const Navbar: React.FC<NavbarProps> = ({
                 <button
                   type="button"
                   onClick={() => setAuthModalOpen(true)}
-                  className="flex items-center gap-1.5 px-3 sm:px-4 py-1.5 rounded-full bg-gradient-to-r from-orange-500 to-amber-500 hover:from-orange-600 hover:to-amber-600 text-white text-xs sm:text-xs font-extrabold shadow-sm shadow-orange-500/20 transition-all cursor-pointer shrink-0 whitespace-nowrap active:scale-95"
+                  className="hidden sm:flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-gradient-to-r from-orange-500 to-amber-500 hover:from-orange-600 hover:to-amber-600 text-white text-xs font-extrabold shadow-sm shadow-orange-500/20 transition-all cursor-pointer shrink-0 whitespace-nowrap active:scale-95"
                 >
                   <User className="w-3.5 h-3.5" />
                   <span>{t("signInBtn")}</span>
                 </button>
               )}
 
-              {/* Mobile Menu Toggle Button */}
+              {/* Mobile Menu Hamburger Toggle (ALWAYS visible on mobile & tablet) */}
               <button
                 type="button"
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                className="lg:hidden p-1.5 rounded-lg text-neutral-600 hover:text-orange-600 hover:bg-orange-50 transition-colors shrink-0"
+                className="lg:hidden p-1.5 rounded-lg text-neutral-700 hover:text-orange-600 hover:bg-orange-50 transition-colors shrink-0"
                 aria-label="Toggle menu"
               >
-                {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+                {mobileMenuOpen ? <X className="w-5 h-5 text-orange-600" /> : <Menu className="w-5 h-5" />}
               </button>
             </div>
           </div>
         </div>
 
-        {/* Mobile / Tablet Drawer Menu */}
+        {/* Mobile / Tablet Slide-out Drawer */}
         {mobileMenuOpen && (
-          <div className="lg:hidden bg-white border-b border-orange-100 px-4 pt-2 pb-6 space-y-1 shadow-lg animate-in slide-in-from-top-2 duration-200">
-            {allNavLinks.map((item) => {
-              const Icon = item.icon;
-              const isActive = pathname === item.href;
-              return (
-                <Link
-                  key={item.href}
-                  href={item.href}
-                  onClick={() => setMobileMenuOpen(false)}
-                  className={`flex items-center justify-between px-3 py-2.5 rounded-xl text-xs font-bold ${
-                    isActive
-                      ? "text-orange-600 bg-orange-50 font-black"
-                      : "text-neutral-700 hover:text-orange-600 hover:bg-orange-50"
-                  }`}
-                >
-                  <div className="flex items-center gap-3">
-                    <Icon className="w-4 h-4 text-orange-500" />
-                    <span>{item.name}</span>
+          <div className="lg:hidden bg-white border-b border-orange-100 px-4 pt-3 pb-6 space-y-2 shadow-xl animate-in slide-in-from-top-2 duration-200 max-h-[85vh] overflow-y-auto">
+            {/* User Account Quick Card in Drawer */}
+            <div className="p-3 bg-gradient-to-r from-orange-50 to-amber-50 rounded-2xl border border-orange-200/80 mb-3 flex items-center justify-between">
+              {currentUser ? (
+                <div className="flex items-center gap-2.5">
+                  <div className="w-10 h-10 rounded-full bg-orange-500 text-white flex items-center justify-center text-sm font-black shadow-xs">
+                    {currentUser.name ? currentUser.name.charAt(0).toUpperCase() : "U"}
                   </div>
-                  {item.badge && (
-                    <span
-                      className={`text-[9px] font-black text-white px-2 py-0.5 rounded-full ${item.badgeColor}`}
-                    >
-                      {item.badge}
-                    </span>
-                  )}
-                </Link>
-              );
-            })}
-            <div className="pt-2 border-t border-orange-100 mt-2 space-y-2">
-              {/* Mobile Language Switcher */}
-              <button
-                type="button"
-                onClick={() => {
-                  toggleLanguage();
-                  setMobileMenuOpen(false);
-                }}
-                className="w-full flex items-center justify-between px-3 py-2.5 rounded-xl text-xs font-bold bg-amber-50 border border-amber-200 text-neutral-800"
-              >
-                <div className="flex items-center gap-2">
-                  <Globe className="w-4 h-4 text-orange-600" />
-                  <span>{language === "en" ? "भाषा बदलें (Switch to हिन्दी)" : "Switch to English"}</span>
+                  <div>
+                    <div className="text-xs font-bold text-neutral-900">{currentUser.name}</div>
+                    <div className="text-[10px] text-neutral-500">{currentUser.phone}</div>
+                  </div>
                 </div>
-                <span className="text-[10px] bg-orange-500 text-white font-bold px-2 py-0.5 rounded-full">
-                  {language === "en" ? "हिन्दी" : "English"}
-                </span>
-              </button>
+              ) : (
+                <button
+                  type="button"
+                  onClick={() => {
+                    setMobileMenuOpen(false);
+                    setAuthModalOpen(true);
+                  }}
+                  className="w-full flex items-center justify-center gap-2 py-2.5 px-4 rounded-xl bg-orange-500 hover:bg-orange-600 text-white text-xs font-bold shadow-xs transition-colors"
+                >
+                  <User className="w-4 h-4" />
+                  <span>{language === "hi" ? "लॉगिन / साइन अप करें" : "Sign In / Register"}</span>
+                </button>
+              )}
 
+              {currentUser && (
+                <button
+                  type="button"
+                  onClick={() => {
+                    setMobileMenuOpen(false);
+                    if (onOpenWallet) onOpenWallet();
+                  }}
+                  className="px-3 py-1.5 rounded-xl bg-white text-orange-600 border border-orange-200 text-xs font-bold shadow-2xs hover:bg-orange-50"
+                >
+                  ₹{currentUser?.walletBalance || walletBalance} + Add
+                </button>
+              )}
+            </div>
+
+            {/* Navigation links */}
+            <div className="space-y-1">
+              {allNavLinks.map((item) => {
+                const Icon = item.icon;
+                const isActive = pathname === item.href;
+                return (
+                  <Link
+                    key={item.href}
+                    href={item.href}
+                    onClick={() => setMobileMenuOpen(false)}
+                    className={`flex items-center justify-between px-3 py-2.5 rounded-xl text-xs font-bold ${
+                      isActive
+                        ? "text-orange-600 bg-orange-50 font-black"
+                        : "text-neutral-700 hover:text-orange-600 hover:bg-orange-50"
+                    }`}
+                  >
+                    <div className="flex items-center gap-3">
+                      <Icon className="w-4 h-4 text-orange-500" />
+                      <span>{item.name}</span>
+                    </div>
+                    {item.badge && (
+                      <span
+                        className={`text-[9px] font-black text-white px-2 py-0.5 rounded-full ${item.badgeColor}`}
+                      >
+                        {item.badge}
+                      </span>
+                    )}
+                  </Link>
+                );
+              })}
+            </div>
+
+            {/* Drawer Bottom Actions */}
+            <div className="pt-3 border-t border-orange-100 mt-3 space-y-2">
               <Link
                 href="/astrologer"
                 onClick={() => setMobileMenuOpen(false)}
-                className="flex items-center justify-between px-3 py-2.5 rounded-xl text-xs font-bold bg-orange-100/70 text-orange-900"
+                className="flex items-center justify-between px-3 py-2.5 rounded-xl text-xs font-bold bg-orange-100/70 text-orange-950 border border-orange-200"
               >
                 <span>🪔 {t("astrologerPortalLink")}</span>
                 <span className="text-[10px] bg-orange-500 text-white px-2 py-0.5 rounded-full font-bold">
                   {language === "hi" ? "हमारे साथ जुड़ें" : "Earn with us"}
                 </span>
               </Link>
+
+              {currentUser && (
+                <button
+                  type="button"
+                  onClick={() => {
+                    handleLogout();
+                    setMobileMenuOpen(false);
+                  }}
+                  className="w-full flex items-center justify-center gap-2 px-3 py-2 text-xs text-rose-600 font-bold hover:bg-rose-50 rounded-xl"
+                >
+                  <LogOut className="w-3.5 h-3.5" />
+                  <span>{language === "hi" ? "लॉग आउट करें" : "Sign Out"}</span>
+                </button>
+              )}
             </div>
           </div>
         )}

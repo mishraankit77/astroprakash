@@ -82,14 +82,14 @@ export default function ChatWithAstrologerPage() {
         </div>
 
         {/* Filters & Search Toolbar */}
-        <div className="bg-white rounded-2xl p-4 border border-orange-100 shadow-sm mb-6 flex flex-wrap items-center justify-between gap-4">
+        <div className="bg-white rounded-2xl p-3 sm:p-4 border border-orange-100 shadow-sm mb-6 flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3 sm:gap-4">
           {/* Category Tabs */}
-          <div className="flex flex-wrap items-center gap-2">
+          <div className="flex items-center gap-2 overflow-x-auto w-full sm:w-auto pb-1 sm:pb-0 scrollbar-none">
             {categories.map((c) => (
               <button
                 key={c}
                 onClick={() => setCategory(c)}
-                className={`px-4 py-2 rounded-xl text-xs font-bold capitalize transition-all cursor-pointer ${
+                className={`px-3.5 sm:px-4 py-2 rounded-xl text-xs font-bold capitalize transition-all cursor-pointer shrink-0 whitespace-nowrap ${
                   category === c
                     ? "bg-orange-500 text-white shadow-md shadow-orange-500/20"
                     : "bg-neutral-100 text-neutral-700 hover:bg-orange-50 hover:text-orange-600"
@@ -107,7 +107,7 @@ export default function ChatWithAstrologerPage() {
 
             <button
               onClick={() => setOnlineOnly(!onlineOnly)}
-              className={`px-3 py-2 rounded-xl text-xs font-bold flex items-center gap-1.5 border transition-all cursor-pointer ${
+              className={`px-3 py-2 rounded-xl text-xs font-bold flex items-center gap-1.5 border transition-all cursor-pointer shrink-0 whitespace-nowrap ${
                 onlineOnly
                   ? "bg-emerald-50 border-emerald-300 text-emerald-700"
                   : "bg-white border-neutral-200 text-neutral-600 hover:border-orange-200"
@@ -119,7 +119,7 @@ export default function ChatWithAstrologerPage() {
           </div>
 
           {/* Search Box */}
-          <div className="relative w-full sm:w-64">
+          <div className="relative w-full sm:w-64 shrink-0">
             <Search className="w-4 h-4 text-neutral-400 absolute left-3 top-3" />
             <input
               type="text"

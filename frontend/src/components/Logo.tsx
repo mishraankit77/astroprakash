@@ -13,21 +13,21 @@ export const Logo: React.FC<LogoProps> = ({
   showText = true,
 }) => {
   const iconSizes = {
-    sm: "w-8 h-8",
-    md: "w-11 h-11",
-    lg: "w-16 h-16",
+    sm: "w-7 h-7 sm:w-8 sm:h-8",
+    md: "w-8 h-8 sm:w-10 sm:h-10",
+    lg: "w-12 h-12 sm:w-16 sm:h-16",
   };
 
   const textSizes = {
-    sm: "text-lg",
-    md: "text-2xl",
-    lg: "text-3xl",
+    sm: "text-base sm:text-lg",
+    md: "text-lg sm:text-2xl",
+    lg: "text-2xl sm:text-3xl",
   };
 
   return (
-    <Link href="/" className={`inline-flex items-center gap-3 group ${className}`}>
+    <Link href="/" className={`inline-flex items-center gap-2 sm:gap-2.5 group shrink-0 ${className}`}>
       {/* Custom Yogi in Dhyan with Rising Sun Emblem */}
-      <div className={`relative flex items-center justify-center rounded-2xl bg-gradient-to-br from-amber-50 via-orange-50 to-orange-100 p-1.5 shadow-sm border border-orange-200/80 transition-transform group-hover:scale-105 duration-300 ${iconSizes[size]}`}>
+      <div className={`relative flex items-center justify-center rounded-xl sm:rounded-2xl bg-gradient-to-br from-amber-50 via-orange-50 to-orange-100 p-1 sm:p-1.5 shadow-xs border border-orange-200/80 transition-transform group-hover:scale-105 duration-300 shrink-0 ${iconSizes[size]}`}>
         <svg
           viewBox="0 0 100 100"
           className="w-full h-full"
@@ -119,7 +119,7 @@ export const Logo: React.FC<LogoProps> = ({
 
       {/* Brand Text */}
       {showText && (
-        <div className="flex flex-col">
+        <div className="flex flex-col shrink-0">
           <div className="flex items-center leading-none">
             <span className={`font-black tracking-tight text-neutral-800 ${textSizes[size]}`}>
               Astro
@@ -128,7 +128,7 @@ export const Logo: React.FC<LogoProps> = ({
               Prakash
             </span>
           </div>
-          <span className="text-[10px] uppercase font-bold tracking-widest text-orange-600/80 mt-0.5">
+          <span className="text-[9px] uppercase font-bold tracking-widest text-orange-600/80 mt-0.5 hidden sm:block">
             Divine Vedic Wisdom
           </span>
         </div>

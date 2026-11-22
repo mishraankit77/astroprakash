@@ -209,23 +209,23 @@ export default function AIAstrologerPage() {
     <div className="min-h-screen bg-[#FFFDF9] flex flex-col text-neutral-800">
       <Navbar onOpenWallet={() => setWalletOpen(true)} walletBalance={walletBalance} />
 
-      <main className="flex-1 max-w-5xl mx-auto px-4 sm:px-6 py-6 w-full flex flex-col h-[calc(100vh-140px)]">
+      <main className="flex-1 max-w-5xl mx-auto px-2.5 sm:px-6 py-3 sm:py-6 w-full flex flex-col h-[calc(100vh-140px)]">
         {/* Top Header Card */}
-        <div className="bg-gradient-to-r from-orange-600 via-amber-500 to-orange-500 rounded-2xl p-4 text-white shadow-md flex items-center justify-between mb-3 flex-shrink-0">
-          <div className="flex items-center gap-3">
-            <div className="bg-white/20 p-2 rounded-xl backdrop-blur-md">
-              <Sparkles className="w-6 h-6 text-yellow-200" />
+        <div className="bg-gradient-to-r from-orange-600 via-amber-500 to-orange-500 rounded-2xl p-3 sm:p-4 text-white shadow-md flex items-center justify-between mb-2 sm:mb-3 flex-shrink-0">
+          <div className="flex items-center gap-2 sm:gap-3 min-w-0">
+            <div className="bg-white/20 p-1.5 sm:p-2 rounded-xl backdrop-blur-md shrink-0">
+              <Sparkles className="w-5 h-5 sm:w-6 sm:h-6 text-yellow-200" />
             </div>
-            <div>
-              <div className="flex items-center gap-2">
-                <h1 className="text-lg font-black tracking-tight">
-                  {language === "hi" ? "प्रकाश AI: शास्त्रीय वैदिक ज्योतिषीय बुद्धिमत्ता" : "Prakash AI: Classical Vedic Jyotish Intelligence"}
+            <div className="min-w-0">
+              <div className="flex items-center gap-1.5 sm:gap-2">
+                <h1 className="text-sm sm:text-lg font-black tracking-tight truncate">
+                  {language === "hi" ? "प्रकाश AI: वैदिक ज्योतिष" : "Prakash AI: Vedic Jyotish"}
                 </h1>
-                <span className="text-[10px] bg-emerald-500 text-white font-bold px-2 py-0.5 rounded-full animate-pulse">
-                  {language === "hi" ? "सटीक वैदिक पंचांग" : "Personalized Ephemeris"}
+                <span className="text-[9px] sm:text-[10px] bg-emerald-500 text-white font-bold px-1.5 sm:px-2 py-0.2 sm:py-0.5 rounded-full animate-pulse shrink-0">
+                  {language === "hi" ? "सटीक" : "Ephemeris"}
                 </span>
               </div>
-              <p className="text-xs text-orange-100">
+              <p className="text-[11px] text-orange-100 hidden sm:block truncate">
                 {language === "hi"
                   ? "वृहत् पराशर होरा शास्त्र, जैमिनी सूत्र एवं नवग्रह पंचांग पर आधारित 24x7 तत्काल मार्गदर्शन"
                   : "Grounded in Brihat Parashara Hora Shastra, Jaimini Sutras & Navagraha Ephemeris"}

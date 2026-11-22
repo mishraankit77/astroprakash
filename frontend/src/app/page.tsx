@@ -138,11 +138,13 @@ export default function HomePage() {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div className="text-center max-w-3xl mx-auto space-y-5">
               {/* Trust Badge */}
-              <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white border border-orange-200/80 shadow-xs text-xs font-bold text-orange-800">
-                <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse" />
-                <span>{language === "hi" ? "1,420+ प्रमाणित ज्योतिषी ऑनलाइन" : "1,420+ Verified Astrologers Live"}</span>
-                <span className="text-orange-300">•</span>
-                <span className="text-orange-600">
+              <div className="inline-flex flex-wrap sm:flex-nowrap items-center justify-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-1 sm:py-1.5 rounded-full bg-white border border-orange-200/80 shadow-xs text-[10px] sm:text-xs font-bold text-orange-800 mx-auto">
+                <div className="flex items-center gap-1.5 shrink-0">
+                  <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse shrink-0" />
+                  <span>{language === "hi" ? "1,420+ प्रमाणित ज्योतिषी ऑनलाइन" : "1,420+ Verified Astrologers Live"}</span>
+                </div>
+                <span className="text-orange-300 hidden sm:inline">•</span>
+                <span className="text-orange-600 shrink-0">
                   {language === "hi" ? "500k+ साधकों द्वारा 4.96/5 ★ रेटिंग" : "Rated 4.96/5 ★ by 500k+ Seekers"}
                 </span>
               </div>
@@ -167,26 +169,26 @@ export default function HomePage() {
               </h1>
 
               {/* Subtitle */}
-              <p className="text-base sm:text-lg text-neutral-600 max-w-2xl mx-auto font-normal leading-relaxed">
+              <p className="text-sm sm:text-lg text-neutral-600 max-w-2xl mx-auto font-normal leading-relaxed px-2">
                 {language === "hi"
                   ? "भारत के प्रतिष्ठित आचार्यों एवं प्रकाश AI से करियर, विवाह, साढ़े साती, कुंडली दोष एवं व्यापार पर शास्त्रोक्त मार्गदर्शन प्राप्त करें।"
                   : "Connect with India's most revered Acharyas and our specialized Prakash AI for precise clarity on Career promotions, Marriage timing, Kundli Doshas & Wealth."}
               </p>
 
               {/* Astrotalk Interactive Search Bar */}
-              <div className="max-w-xl mx-auto pt-2">
-                <div className="relative flex items-center shadow-lg shadow-orange-500/5 rounded-2xl border border-orange-200 bg-white p-1.5 focus-within:ring-2 focus-within:ring-orange-500 focus-within:border-orange-500 transition-all">
-                  <Search className="w-5 h-5 text-orange-400 ml-3 mr-2" />
+              <div className="max-w-xl mx-auto pt-2 px-1">
+                <div className="relative flex items-center shadow-lg shadow-orange-500/5 rounded-2xl border border-orange-200 bg-white p-1 sm:p-1.5 focus-within:ring-2 focus-within:ring-orange-500 focus-within:border-orange-500 transition-all">
+                  <Search className="w-4 h-4 sm:w-5 sm:h-5 text-orange-400 ml-2.5 sm:ml-3 mr-1.5 shrink-0" />
                   <input
                     type="text"
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
-                    placeholder={language === "hi" ? "ज्योतिषी का नाम, समस्या (नौकरी, विवाह, साढ़े साती, कुंडली) खोजें..." : "Search by name, problem (Job, Marriage, Sade Sati, Kundli)..."}
-                    className="w-full text-sm text-neutral-800 placeholder-neutral-400 bg-transparent focus:outline-none py-2"
+                    placeholder={language === "hi" ? "ज्योतिषी, कुंडली या समस्या खोजें..." : "Search astrologer, Kundli, problem..."}
+                    className="w-full text-xs sm:text-sm text-neutral-800 placeholder-neutral-400 bg-transparent focus:outline-none py-1.5 sm:py-2 min-w-0"
                   />
                   <Link
                     href={`/chat-with-astrologer?search=${encodeURIComponent(searchQuery)}`}
-                    className="bg-orange-500 hover:bg-orange-600 text-white font-bold text-xs sm:text-sm px-5 py-2.5 rounded-xl transition-colors flex-shrink-0"
+                    className="bg-orange-500 hover:bg-orange-600 text-white font-bold text-xs sm:text-sm px-3.5 sm:px-5 py-2 sm:py-2.5 rounded-xl transition-colors shrink-0"
                   >
                     {language === "hi" ? "परामर्श लें" : "Consult"}
                   </Link>
@@ -194,28 +196,28 @@ export default function HomePage() {
               </div>
 
               {/* Action Buttons */}
-              <div className="flex flex-wrap items-center justify-center gap-3 pt-3">
+              <div className="flex flex-col sm:flex-row flex-wrap items-center justify-center gap-2.5 sm:gap-3 pt-3 w-full max-w-md sm:max-w-none mx-auto">
                 <Link
                   href="/chat-with-astrologer"
-                  className="flex items-center gap-2 px-6 py-3.5 rounded-xl bg-orange-500 hover:bg-orange-600 text-white font-bold text-sm shadow-md shadow-orange-500/25 transition-all hover:scale-102"
+                  className="w-full sm:w-auto justify-center flex items-center gap-2 px-5 sm:px-6 py-3 sm:py-3.5 rounded-xl bg-orange-500 hover:bg-orange-600 text-white font-bold text-xs sm:text-sm shadow-md shadow-orange-500/25 transition-all active:scale-98"
                 >
-                  <MessageSquare className="w-4 h-4" />
+                  <MessageSquare className="w-4 h-4 shrink-0" />
                   <span>{language === "hi" ? "ज्योतिषी से चैट करें (पहली चैट FREE)" : "Chat with Astrologer (FREE 1st Chat)"}</span>
                 </Link>
 
                 <Link
                   href="/ai-astrologer"
-                  className="flex items-center gap-2 px-6 py-3.5 rounded-xl bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 text-white font-bold text-sm shadow-md shadow-amber-500/20 transition-all hover:scale-102"
+                  className="w-full sm:w-auto justify-center flex items-center gap-2 px-5 sm:px-6 py-3 sm:py-3.5 rounded-xl bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 text-white font-bold text-xs sm:text-sm shadow-md shadow-amber-500/20 transition-all active:scale-98"
                 >
-                  <Sparkles className="w-4 h-4" />
+                  <Sparkles className="w-4 h-4 shrink-0" />
                   <span>{language === "hi" ? "प्रकाश AI से पूछें (24x7)" : "Ask Prakash AI Instant"}</span>
                 </Link>
 
                 <Link
                   href="/free-kundli"
-                  className="flex items-center gap-2 px-6 py-3.5 rounded-xl bg-white hover:bg-orange-50 text-neutral-800 border border-orange-200 font-bold text-sm transition-all"
+                  className="w-full sm:w-auto justify-center flex items-center gap-2 px-5 sm:px-6 py-3 sm:py-3.5 rounded-xl bg-white hover:bg-orange-50 text-neutral-800 border border-orange-200 font-bold text-xs sm:text-sm transition-all active:scale-98"
                 >
-                  <Compass className="w-4 h-4 text-orange-500" />
+                  <Compass className="w-4 h-4 text-orange-500 shrink-0" />
                   <span>{language === "hi" ? "मुफ्त जन्म कुंडली बनाएं" : "Free Janam Kundli"}</span>
                 </Link>
               </div>
